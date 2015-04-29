@@ -1,0 +1,2 @@
+# lalista
+An Ionic project

@@ -1,0 +1,14 @@
+{
+  "name": "lalista",
+  "app_id": "",
+  "defaultBrowser": "firefox",
+  "gulpStartupTasks": [
+    "sass",
+    "templates",
+    "scripts",
+    "watch"
+  ],
+  "watchPatterns": [
+    "app/**/*"
+  ]
+}
