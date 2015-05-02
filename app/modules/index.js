@@ -6,7 +6,7 @@ var API_HOST = 'http://localhost:3000';
 function config($ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
 }
-function run($ionicPlatform, $rootScope) {
+function run($ionicPlatform) {
     $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -17,12 +17,12 @@ function run($ionicPlatform, $rootScope) {
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
-    $rootScope.global={};
+    
   });
 }
 
 angular.module(
-  'app', [ 'ionic','' 'starter','user'])
+  'app', [ 'ionic', 'ngStorage', 'starter', 'auth','user','menu'])
   .constant('API_HOST', API_HOST)
   .config(config)
   .run(run);

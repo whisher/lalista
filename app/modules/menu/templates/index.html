@@ -1,0 +1,10 @@
+<ion-view view-title="Menu">
+	<ion-content class="padding">
+		<h1>pippo</h1>
+		<ul class="list">
+      		<li class="item" ng-repeat="tag in menu.tags track by $index">
+        		<a class="button button-block" ng-href="#/tab/menu/{{::tag}}">{{::tag}}</a>  
+      		</li>
+    		</ul>
+	  </ion-content>
+</ion-view>

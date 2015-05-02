@@ -1,0 +1,17 @@
+<ion-view  view-title="Home">
+  <!-- <ion-nav-title>
+        <h1><i class="icon ion-android-home"></i></h1>
+  </ion-nav-title> -->
+  <ion-content>
+    <h1>Benvenuto</h1>
+    <ul class="list" ng-if="!global.token">
+      <li class="item">
+        <a class="button button-block button-energized icon icon-left ion-android-person" href="#/tab/signin">SignIn</a>  
+      </li>
+      <li class="item">
+        <a class="button button-block button-energized icon icon-left ion-android-person-add" href="#/tab/register">Register</a>  
+      </li>
+    </ul>
+    
+  </ion-content>
+</ion-view>

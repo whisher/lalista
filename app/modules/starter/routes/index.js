@@ -17,23 +17,13 @@ function config($stateProvider, $urlRouterProvider) {
     url: '/home',
     views: {
       'tab-home': {
-        templateUrl: 'starter/templates/tab-home.html',
-        controller: 'HomeController',
-        controllerAs: 'home'
-      }
-    }
-  })
-
-  .state('tab.food', {
-    url: '/food',
-    views: {
-      'tab-food': {
-        templateUrl: 'starter/templates/tab-food.html',
-        controller: 'FoodController',
-        controllerAs: 'food'
+        templateUrl: 'starter/templates/home.html',
+        controller: 'HomeController as home'
       }
     }
   });
+
+  
 
  
   // if none of the above states are matched, use this as the fallback

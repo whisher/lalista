@@ -21,11 +21,13 @@ var jsExt = (release)?'.min.js':''+'.js';
 var tmp = path.resolve('.tmp');
 
 var paths = {
-  clean: ['./www/css','./www/scripts','./www/fonts','./www/img',tmp],
+  clean: ['./www',tmp],
+  index: './app/index.html',
   scss: './app/scss/ionic.app.scss',
   vendors: [
     './bower_components/ionic/js/ionic.bundle'+jsExt,
-    './bower_components/ngstorage/ngStorage'+jsExt
+    './bower_components/ngstorage/ngStorage'+jsExt,
+    './bower_components/angular-jwt/dist/angular-jwt'+jsExt
   ],
   templates: './app/modules/**/templates/*.html',
   scripts: [tmp+ '/templates.js','./app/modules/**/*.js'],
@@ -34,6 +36,7 @@ var paths = {
 };
 
 var dests = {
+  index:'./www/',
   css:'./www/css',
   templates: tmp,
   scripts:'./www/scripts',
@@ -56,6 +59,16 @@ gulp.task('clean', function (done) {
   del(paths.clean, done);
 });
 
+/*gulp.task('index', function () {
+  return gulp.src(paths.index)
+    .pipe(gulpif(release, minifyHTML({comments: true, empty: true, spare: true, quotes: true})))
+   .pipe(dests.index);
+});*/
+gulp.task('index', function () {
+  return gulp.src(paths.index)
+    .pipe(gulpif(release, minifyHTML({empty: true, spare: true, quotes: true})))
+    .pipe(gulp.dest(dests.index));
+});
 gulp.task('sass', function(done) {
   gulp.src(paths.scss)
     .pipe(sass())
@@ -109,7 +122,7 @@ gulp.task('images', function () {
 gulp.task('default', function(done) {
   runSequence(
       ['clean'],
-      ['fonts','images','templates'],
+      ['index','fonts','images','templates'],
       ['hint'],
       ['vendors','scripts'],
       'sass',
@@ -117,8 +130,10 @@ gulp.task('default', function(done) {
 });
 
 gulp.task('watch', function() {
+  gulp.watch(paths.index, ['index']);
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.scripts, ['scripts']);
   gulp.watch(paths.templates, ['templates']);
+
 });
 

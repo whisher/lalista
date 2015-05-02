@@ -1,7 +1,12 @@
 (function() {
   'use strict';
 
-function Users(API_HOST,$http) {
+var AUTH_EVENTS = {
+  authenticated: 'authenticated',
+  unauthorized: 'unauthorized'
+};
+
+function Users($http, API_HOST) {
   return {
     signin: function(data) {
         return $http.post(API_HOST+'/api/auth', data);
@@ -45,6 +50,6 @@ function UserToken($localStorage, jwtHelper) {
 }
 
 angular.module('user.services', [])
-    .factory('Users', Users)
-    .factory('Users', Users);
+    .constant('AUTH_EVENTS', AUTH_EVENTS)
+   .factory('Users', Users);
 })();
